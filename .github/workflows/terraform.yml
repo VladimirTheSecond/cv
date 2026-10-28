@@ -15,7 +15,9 @@ name: 'Terraform'
 on:
   push:
     branches: [ "main" ]
+    paths: [ "terraform/**", ".github/workflows/terraform.yml" ]
   pull_request:
+    paths: [ "terraform/**", ".github/workflows/terraform.yml" ]
 
 permissions:
   contents: read
@@ -38,6 +40,7 @@ jobs:
     defaults:
       run:
         shell: bash
+        working-directory: terraform
 
     steps:
     - name: Checkout
