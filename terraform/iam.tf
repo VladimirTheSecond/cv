@@ -2,7 +2,7 @@
 resource "aws_iam_role" "ssm" {
   name = "cv-server-ssm"
 
-# "2012-10-17" isn’t a date. It’s the version of the IAM policy language, a fixed constant defined by AWS.
+  # "2012-10-17" isn’t a date. It’s the version of the IAM policy language, a fixed constant defined by AWS.
   assume_role_policy = jsonencode({
     Version = "2012-10-17"
     Statement = [{
