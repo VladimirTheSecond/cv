@@ -1,14 +1,7 @@
-# SSH Key Pair
-resource "aws_key_pair" "deployer" {
-  key_name   = "cv-deployer-key"
-  public_key = var.ssh_public_key
-}
-
 # EC2 Instance
 resource "aws_instance" "cv" {
   ami                    = data.aws_ami.ubuntu.id
   instance_type          = var.instance_type
-  key_name               = aws_key_pair.deployer.key_name
   subnet_id              = aws_subnet.public.id
   vpc_security_group_ids = [aws_security_group.server.id]
   iam_instance_profile   = aws_iam_instance_profile.ssm.name
@@ -41,6 +34,7 @@ resource "aws_eip" "cv" {
 
   lifecycle {
     prevent_destroy = true
+    ignore_changes  = [ami, key_name]
   }
 }
 

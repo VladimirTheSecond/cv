@@ -58,7 +58,7 @@ jobs:
       uses: hashicorp/setup-terraform@v3
 
     - name: Terraform Init
-      run: terraform init -input=false -backend-config="bucket=${{ secrets.TF_STATE_BUCKET }}"
+      run: terraform init -input=false -backend-config=$bucket
 
     - name: Terraform Format
       run: terraform fmt -check

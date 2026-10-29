@@ -27,9 +27,3 @@ variable "cv_subdomain" {
   type        = string
   default     = "cv"
 }
-
-variable "ssh_public_key" {
-  description = "SSH Public Key is stored in the GitHub project secrets"
-  type        = string
-  default     = "The key should be set in GitHub secrets section"
-}
