@@ -1,0 +1,2 @@
+bucket = "your-secret-bucket-name"
+region = "eu-central-1"
