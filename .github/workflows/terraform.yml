@@ -58,9 +58,7 @@ jobs:
 
     - name: Terraform Init
       run: |
-        terraform init -input=false \
-          -backend-config="bucket=${{ secrets.TF_STATE_BUCKET }}" \
-          -backend-config="region=${{ env.AWS_REGION }}"
+        terraform init -input=false
 
     - name: Terraform Format
       run: terraform fmt -check
