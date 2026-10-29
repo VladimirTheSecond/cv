@@ -3,9 +3,9 @@ output "server_public_ip" {
   value       = aws_eip.cv.public_ip
 }
 
-output "ssh_command" {
-  description = "SSH command to connect to the server"
-  value       = "ssh ubuntu@${aws_eip.cv.public_ip}"
+output "ssm_command" {
+  description = "Open a shell on the server via SSM Session Manager"
+  value       = "aws ssm start-session --target ${aws_instance.cv.id} --region ${var.aws_region}"
 }
 
 output "cv_url" {

@@ -17,7 +17,7 @@ variable "root_volume_size" {
 }
 
 variable "domain_name" {
-  description = "Apex domain of the Route 53 hosted zone (managed in terraform/bootstrap/)"
+  description = "Apex domain of the Route 53 hosted zone"
   type        = string
   default     = "vladimirulasovets.de"
 }
@@ -31,5 +31,5 @@ variable "cv_subdomain" {
 variable "ssh_public_key" {
   description = "SSH Public Key is stored in the GitHub project secrets"
   type        = string
-  default     = ""
+  default     = "The key should be set in GitHub secrets section"
 }
