@@ -2,7 +2,6 @@
 - name: Configure cv web server
   hosts: localhost
   connection: local
-  become: true
 
   roles:
     - swap

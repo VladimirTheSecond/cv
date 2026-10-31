@@ -1,5 +1,7 @@
-# Pinned Caddy version; bump it here to upgrade (releases: github.com/caddyserver/caddy/releases)
+# Pinned Caddy version (releases: github.com/caddyserver/caddy/releases)
 caddy_version: "2.11.7"
 
 site_domain: cv.vladimirulasovets.de
+
+# Must match `ansible-pull -d /opt/cv` in .github/workflows/deploy-site.yml
 site_root: /opt/cv/site

@@ -1,7 +1,8 @@
+---
 # Deploys the website: asks the server (via SSM) to run ansible-pull on the pushed commit.
 #
 # Required GitHub secrets (Settings -> Environments -> production):
-#   AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY - the same CI IAM user as terraform.yml
+#   AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY
 
 name: 'Deploy site'
 
