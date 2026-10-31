@@ -34,7 +34,6 @@ resource "aws_eip" "cv" {
 
   lifecycle {
     prevent_destroy = true
-    ignore_changes  = [ami, key_name]
   }
 }
 
