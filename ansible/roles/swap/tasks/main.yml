@@ -1,3 +1,4 @@
+---
 # t3.micro has 1 GB RAM: swap keeps apt and Ansible from running out of memory
 - name: Create swap file
   ansible.builtin.command: fallocate -l 1G /swapfile
@@ -17,6 +18,7 @@
 - name: Format and enable swap file
   ansible.builtin.shell: mkswap /swapfile && swapon /swapfile
   when: "'/swapfile' not in swap_active.stdout"
+  changed_when: true
 
 - name: Mount swap on boot
   ansible.builtin.lineinfile:
