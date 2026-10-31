@@ -1,0 +1,47 @@
+- name: Gather installed packages
+  ansible.builtin.package_facts:
+
+- name: Add Caddy apt repository
+  ansible.builtin.deb822_repository:
+    name: caddy-stable
+    types: [deb]
+    uris: https://dl.cloudsmith.io/public/caddy/stable/deb/debian
+    suites: [any-version]
+    components: [main]
+    signed_by: https://dl.cloudsmith.io/public/caddy/stable/gpg.key
+
+# Unhold first, otherwise apt refuses to change the version of a held package
+- name: Allow Caddy version change
+  ansible.builtin.dpkg_selections:
+    name: caddy
+    selection: install
+  when: ansible_facts.packages is not defined or
+        ansible_facts.packages.caddy is not defined or
+        ansible_facts.packages.caddy[0].version != caddy_version
+
+- name: Install pinned Caddy version
+  ansible.builtin.apt:
+    name: "caddy={{ caddy_version }}"
+    update_cache: true
+    cache_valid_time: 3600
+    allow_downgrade: true
+
+# Keep a manual `apt upgrade` from moving Caddy away from the pinned version
+- name: Hold Caddy package
+  ansible.builtin.dpkg_selections:
+    name: caddy
+    selection: hold
+
+- name: Deploy Caddyfile
+  ansible.builtin.template:
+    src: Caddyfile.j2
+    dest: /etc/caddy/Caddyfile
+    mode: "0644"
+    validate: caddy validate --adapter caddyfile --config %s
+  notify: Reload Caddy
+
+- name: Ensure Caddy is running
+  ansible.builtin.service:
+    name: caddy
+    state: started
+    enabled: true

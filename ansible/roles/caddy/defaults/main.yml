@@ -1,0 +1,5 @@
+# Pinned Caddy version; bump it here to upgrade (releases: github.com/caddyserver/caddy/releases)
+caddy_version: "2.11.7"
+
+site_domain: cv.vladimirulasovets.de
+site_root: /opt/cv/site

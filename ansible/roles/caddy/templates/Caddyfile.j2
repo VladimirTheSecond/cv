@@ -1,0 +1,16 @@
+{{ site_domain }} {
+	root * {{ site_root }}
+	file_server
+	encode zstd gzip
+
+	# PDFs keep the same names, so browsers must re-check them every time
+	@cv path /cv/*
+	header @cv Cache-Control "no-cache"
+
+	header {
+		Strict-Transport-Security "max-age=31536000"
+		X-Content-Type-Options "nosniff"
+		Referrer-Policy "strict-origin-when-cross-origin"
+		-Server
+	}
+}

@@ -1,0 +1,9 @@
+# Applied on the server itself via ansible-pull (triggered by deploy-site.yml over SSM)
+- name: Configure cv web server
+  hosts: localhost
+  connection: local
+  become: true
+
+  roles:
+    - swap
+    - caddy
