@@ -1,0 +1,16 @@
+# macOS
+.DS_Store
+._*
+
+# Editors / IDEs
+.vscode/
+.idea/
+*.swp
+*~
+
+# Ansible
+*.retry
+
+# Local secrets and environment files (never commit)
+.env
+.env.*

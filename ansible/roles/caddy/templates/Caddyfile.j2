@@ -1,6 +1,8 @@
 {{ caddy_site_domain }} {
 	root * {{ caddy_site_root }}
-	file_server
+		file_server {
+		hide .*
+	}
 	encode zstd gzip
 
 	# PDFs keep the same names, so browsers must re-check them every time
