@@ -27,3 +27,15 @@ variable "cv_subdomain" {
   type        = string
   default     = "cv"
 }
+
+variable "budget_limit_usd" {
+  description = "Monthly AWS spend limit in USD for the budget alert"
+  type        = string
+  default     = "15"
+}
+
+variable "budget_email" {
+  description = "Email for budget alerts, passed from GitHub secrets (TF_VAR_budget_email)"
+  type        = string
+  sensitive   = true
+}
