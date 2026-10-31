@@ -8,10 +8,21 @@ Everyone who visit my page cv.vladimirulasovets.de should be able to download my
 - English
 - Russian
 
-The hook is the skippable "floppy bird" mini-game.  
+. . . and for two roles:
+- DevOps
+- Support Engineer
+
+The hook is the skippable "flappy bird" mini-game.  
 
 Main goals:  
 simple and fast as possible  
-no JS  
-GIT first, nothing is stored locally except secrets  
+available on every browser including mobile  
+GIT first, nothing is stored locally  
+
+Tooling:
+- Terraform (AWS)
+- Ansible  
+- Caddy webserver (easy, lightweight and no problems with certificates)  
+- HTML + CSS for CV  
+- JS for the game
 
