@@ -1,2 +1,0 @@
-- name: Enable swap
-  ansible.builtin.shell: mkswap /swapfile && swapon /swapfile

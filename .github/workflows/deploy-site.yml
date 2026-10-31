@@ -23,8 +23,22 @@ env:
   REPO_URL: https://github.com/${{ github.repository }}.git
 
 jobs:
+
+  lint:
+    name: 'Ansible lint'
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Run ansible-lint
+      uses: ansible/ansible-lint@v25
+      with:
+        working_directory: ansible
+
   deploy:
     name: 'Deploy'
+    needs: lint
     runs-on: ubuntu-latest
     environment: production
 
