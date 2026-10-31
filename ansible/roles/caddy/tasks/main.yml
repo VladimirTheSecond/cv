@@ -21,6 +21,24 @@
     name: caddy
     selection: hold
 
+- name: Create Caddy log directory
+  ansible.builtin.file:
+    path: /var/log/caddy
+    state: directory
+    owner: caddy
+    group: caddy
+    mode: "0755"
+
+- name: Create Caddy access log
+  ansible.builtin.file:
+    path: /var/log/caddy/access.log
+    state: touch
+    owner: caddy
+    group: caddy
+    mode: "0640"
+    access_time: preserve
+    modification_time: preserve
+
 - name: Deploy Caddyfile
   ansible.builtin.template:
     src: Caddyfile.j2
